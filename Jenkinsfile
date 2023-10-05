@@ -1,9 +1,9 @@
 pipeline {
 
     agent {
-        node {
+        /*node {
             label 'master'
-        }
+        }*/
     }
     
     environment {
