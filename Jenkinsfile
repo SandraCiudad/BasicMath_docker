@@ -102,7 +102,7 @@ pipeline {
                         sh '''rm -rf reports/doxygen'''
 
                         // CPPCheck Code Analysis
-                        sh '''cppcheck --enable=all --inconclusive --xml --xml-version=2 `find "/home" -name "*.c*" | grep -v ".cccc" | grep -v ".svn" | grep -v ".settings" | grep -v ".cproject"` 2> reports/project_cppcheck.xml'''
+                        sh '''cppcheck --enable=all --inconclusive --xml --xml-version=2 `find "." -name "*.c*" | grep -v ".cccc" | grep -v ".svn" | grep -v ".settings" | grep -v ".cproject"` 2> reports/project_cppcheck.xml'''
 
                         // CCCC Code Analysis
                         sh '''cccc --html_outfile=index.html `find "/home" -name "*.c*" | grep -v ".svn" | grep -v ".cccc" | grep -v ".settings" | grep -v ".cproject"`; mv .cccc reports/cccc; mv index.html reports/cccc'''
@@ -122,7 +122,7 @@ pipeline {
                         sh '''mv /home/root/doxygen/doxyfile /home; cd /home; (cat doxyfile ; echo "PROJECT_NAME=PROJECT") | doxygen -; cd -; mv /home/doxygen reports'''
 
                         // Run Valgrind
-                        dir("${env.WORKSPACE}/path/to/binary") {
+                        dir("${env.WORKSPACE}/home") {
                             sh '''valgrind --tool=memcheck --leak-check=full --track-origins=yes --xml=yes --xml-file=../../../../../reports/project_valgrind.xml ./APP --gtest_filter=TEST_API.TEST_1:TEST_API.TEST_2'''
                         }
                     }
