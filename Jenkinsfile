@@ -103,7 +103,8 @@ pipeline {
 
                         // CPPCheck Code Analysis
                         echo '''home'''
-                        sh'''ls ./home'''
+                        sh'''cd /home'''
+                        sh'''ls'''
                         echo '''ci'''
                         sh'''ls ./home/ci'''
                         echo '''Documentos'''
