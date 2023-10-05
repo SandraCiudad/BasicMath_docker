@@ -1,10 +1,11 @@
 pipeline {
+    agent any
 
-    agent { any
-        /*node {
+    /*agent {
+        node {
             label 'master'
-        }*/
-    }
+        }
+    }*/
     
     environment {
         DOCKER_IMAGE = 'xsdk:j2.0'
