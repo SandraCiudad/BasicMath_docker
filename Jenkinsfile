@@ -119,7 +119,7 @@ pipeline {
                         }
                         
                         // Generate Doxygen documentation                                  //modifica parámetros en el doxyfile (nombre)
-                        sh '''mv /home/root/doxygen/doxyfile path/to/src; cd path/to/src; (cat doxyfile ; echo "PROJECT_NAME=PROJECT") | doxygen -; cd -; mv path/to/src/doxygen reports'''
+                        sh '''mv /home/root/doxygen/doxyfile /home; cd /home; (cat doxyfile ; echo "PROJECT_NAME=PROJECT") | doxygen -; cd -; mv /home/doxygen reports'''
 
                         // Run Valgrind
                         dir("${env.WORKSPACE}/path/to/binary") {
@@ -145,7 +145,7 @@ pipeline {
             
             steps {
 
-                dir("${env.WORKSPACE}/path/to/binary") 
+                dir("${env.WORKSPACE}/home") 
                 {
                     sh 'xsltproc -o junitTestBasicMathResults.xml cpp2junit.xslt cppTestBasicMathResults.xml';
                     //sh "./RUN_ALL_TESTS_WITH_OUTPUT.sh"
