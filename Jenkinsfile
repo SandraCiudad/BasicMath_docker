@@ -28,13 +28,14 @@ pipeline {
                 sh "mkdir -p reports"
                 sh "mkdir -p doc"
                 
-                sh "cp /home/jmenam/automated_compilation/compile.sh ."
+                /*sh "cp /home/jmenam/automated_compilation/compile.sh ."
                 sh "cp /home/jmenam/automated_compilation/compile_projects.sh ."
                 sh "cp /home/jmenam/automated_compilation/doxyconfig ."
                 sh "cp /home/jmenam/automated_compilation/enable_xsdk.sh ."
 
                 sh '''find -path "*/[Rr][Ee][Ll][Ee][Aa][Ss][Ee]_*/*" ! -name '*.sh' -delete'''
                 sh '''find -path "*/[Dd][Ee][Bb][Uu][Gg]_*/*" ! -name '*.sh' -delete'''
+                */
             }
         }
         
